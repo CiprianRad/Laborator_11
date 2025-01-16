@@ -25,3 +25,6 @@ class MovieViewsDto:
     @views.setter
     def views(self, value):
         self.__views = value
+
+    def __str__(self):
+        return f"Title: {self.title}, Views: {self.views}"

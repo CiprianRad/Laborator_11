@@ -16,8 +16,16 @@ class EntityValidator():
 
 class BaseEntityValidator(EntityValidator):
     def validate(self, entity):
-        if not isinstance(entity.id, int) or entity.id < 0:
-            raise ValidatorException("Person ID must be a positive integer")
+        entity_id = entity.id
+
+        # Check if id is a tuple
+        if isinstance(entity_id, tuple):
+            if not all(isinstance(id_part, int) and id_part >= 0 for id_part in entity_id):
+                raise ValidatorException("All IDs in the tuple must be positive integers")
+        else:
+            # Single ID validation
+            if not isinstance(entity_id, int) or entity_id < 0:
+                raise ValidatorException("ID must be a positive integer")
 
 class PersonValidator(BaseEntityValidator):
     def validate(self, person):
@@ -52,9 +60,16 @@ class ClientValidator(PersonValidator):
             raise ValidatorException("Cnp day number incorrect. In that month there were only 30 days")
 
     def validate(self, client):
-        if not isinstance(client, ClientEntity):
-            raise ValidatorException("Client Entity must be a ClientEntity object")
+        # if not isinstance(client, ClientEntity):
+        #     raise ValidatorException("Client Entity must be a ClientEntity object")
         super().validate(client)
         if not isinstance(client.cnp, int) or len(str(client.cnp)) != 13 or client.cnp <=0 :
             raise ValidatorException("Client CNP must be a 13 digit positive integer ")
         self.validate_cnp(client)
+
+
+class MovieValidator(BaseEntityValidator):
+    pass
+
+class MovieClientValidator(BaseEntityValidator):
+    pass

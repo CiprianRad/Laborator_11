@@ -33,4 +33,5 @@ class MovieEntity(BaseEntity):
         self.__genre = value
 
     def __str__(self):
-        return f"{super().__str__}, title: {self.title}, description: {self.description}, genre: {self.genre}"
+        return super().__str__() + ", " 'title:' + " " + str(self.title) + ", " + "description:" + " " + str(
+            self.description) + ", " + "genre:" + " " + str(self.genre)

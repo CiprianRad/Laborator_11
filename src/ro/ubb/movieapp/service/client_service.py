@@ -12,7 +12,7 @@ class ClientService:
     def find_client_by_id(self, id):
         return self.client_repository.find_by_id(id)
 
-    def get_all_client(self):
+    def get_all_clients(self):
         return self.client_repository.find_all()
 
     def add_client(self, id, name, cnp):

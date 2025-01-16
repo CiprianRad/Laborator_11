@@ -34,3 +34,6 @@ class MovieClientEntity(AbstractEntity):
     @title.setter
     def title(self, value):
         self.__title = value
+
+    def __str__(self):
+        return f'Movie ID: {self.movie_id}, Client ID: {self.client_id}, Title: {self.title}'

@@ -15,7 +15,7 @@ class PersonEntity(BaseEntity):
         self.__name = value
 
     def __str__(self):
-        return f"{super().__str__()}, Name: {self.name}"
+        return super().__str__() + "," + "Name: " + str(self.name)
 
 class ClientEntity(PersonEntity):
     def __init__(self, id, name, cnp):
@@ -29,3 +29,6 @@ class ClientEntity(PersonEntity):
     @cnp.setter
     def cnp(self, value):
         self.__cnp = value
+
+    def __str__(self):
+        return super().__str__() + "," + "CNP: " + str(self.cnp)

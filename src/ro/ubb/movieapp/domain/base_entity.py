@@ -22,3 +22,6 @@ class BaseEntity(AbstractEntity):
     def __str__(self):
         return f"ID: {self.id}"
 
+    def __repr__(self):
+        return f"ID: {self.id}"
+

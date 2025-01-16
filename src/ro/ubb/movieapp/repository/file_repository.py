@@ -12,7 +12,7 @@ class ClientFileRepository(InMemoryRepository):
         with open(self.__file_name) as f:
             for line in f:
                 array = line.split(",")
-                client = ClientEntity(array[0], array[1], array[2])
+                client = ClientEntity(int(array[0]), array[1], int(array[2]))
                 super().save(client)
 
     def save(self, client):

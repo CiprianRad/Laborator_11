@@ -11,7 +11,7 @@ class MovieService:
     def find_movie_by_id(self, id):
         return self.movie_repository.find_by_id(id)
 
-    def get_all_movie(self):
+    def get_movies(self):
         return self.movie_repository.find_all()
 
     def remove_movie(self, id):
